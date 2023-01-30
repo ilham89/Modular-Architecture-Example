@@ -1,5 +1,5 @@
+import { FallbackCover } from "@assets/index";
 import { useNavigate } from "react-router-dom";
-import PlaceholderImage from "@assets/fallback-cover.jpg";
 import { TopArtistProps } from "./interface";
 
 const ArtistCard = ({ track }: TopArtistProps) => {
@@ -16,7 +16,7 @@ const ArtistCard = ({ track }: TopArtistProps) => {
     >
       <img
         alt="song_img"
-        src={track?.images?.coverart || PlaceholderImage}
+        src={track?.images?.coverart || FallbackCover}
         className="w-full h-56 rounded-lg"
       />
       <p className="mt-4 font-semibold text-lg text-white truncate">

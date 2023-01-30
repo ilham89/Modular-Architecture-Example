@@ -4,9 +4,9 @@ import {
   playPause,
   setActiveSong,
 } from "@store/slices/playerSlice/playerSlice";
-import PlaceholderImage from "@assets/fallback-cover.jpg";
 import PlayPause from "@shared/components/PlayPause";
 import { SongCardProps } from "@shared/components/SongCard/interface";
+import { FallbackCover } from "@assets/index";
 
 const SongCard = ({ song, isPlaying, activeSong, data, i }: SongCardProps) => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ const SongCard = ({ song, isPlaying, activeSong, data, i }: SongCardProps) => {
         </div>
         <img
           alt="song_img"
-          src={song.images?.coverart || PlaceholderImage}
+          src={song.images?.coverart || FallbackCover}
           className="w-full h-full rounded-lg"
         />
       </div>

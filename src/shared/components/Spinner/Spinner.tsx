@@ -1,4 +1,4 @@
-import Loader from "@assets/loader.svg";
+import { Loader } from "@assets/index";
 import { SpinnerProps } from "./interface";
 
 const Spinner = ({ title }: SpinnerProps) => (
