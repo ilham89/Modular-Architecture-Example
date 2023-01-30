@@ -6,14 +6,18 @@ import DiscoverRoutes from "@modules/Discover/routes";
 import TopArtistRoutes from "@modules/TopArtists/routes";
 import TopChartRoutes from "@modules/TopCharts/routes";
 import AroundYouRoutes from "@modules/AroundYou/routes";
-import DetailArtistRoutes from "@modules/Artists/routes";
+import ArtistRoutes from "@modules/Artists/routes";
+import SongRoutes from "@modules/Songs/routes";
+import SearchRoutes from "@modules/Search/routes";
 
 const routes = [
   ...DiscoverRoutes,
   ...TopArtistRoutes,
   ...TopChartRoutes,
   ...AroundYouRoutes,
-  ...DetailArtistRoutes,
+  ...ArtistRoutes,
+  ...SongRoutes,
+  ...SearchRoutes,
 ];
 const Routes = () => (
   <BrowserRouter>

@@ -1,7 +1,15 @@
-//@ts-nocheck
-const Seekbar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
+import { SeekbarProps } from "./interfaces";
+
+const Seekbar = ({
+  value,
+  min,
+  max,
+  onInput,
+  setSeekTime,
+  appTime,
+}: SeekbarProps) => {
   // converts the time to format 0:00
-  const getTime = (time) =>
+  const getTime = (time: number) =>
     `${Math.floor(time / 60)}:${`0${Math.floor(time % 60)}`.slice(-2)}`;
 
   return (

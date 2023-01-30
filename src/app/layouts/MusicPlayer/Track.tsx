@@ -1,5 +1,6 @@
-//@ts-nocheck
-const Track = ({ isPlaying, isActive, activeSong }) => (
+import { TrackProps } from "./interfaces";
+
+const Track = ({ isPlaying, isActive, activeSong }: TrackProps) => (
   <div className="flex-1 flex items-center justify-start">
     <div
       className={`${
@@ -22,5 +23,4 @@ const Track = ({ isPlaying, isActive, activeSong }) => (
     </div>
   </div>
 );
-
 export default Track;

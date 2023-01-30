@@ -1,6 +1,7 @@
-import { IShazamCore } from "@shared/interfaces/shazam-core";
+import { IShazamCore, IShazamCoreDetail } from "@shared/interfaces/shazam-core";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IDetailArtist } from "@shared/interfaces/detail-artist";
+import { ISearchTerm } from "@shared/interfaces/search-term";
 
 export const shazamCoreApi = createApi({
   reducerPath: "shazamCoreApi",
@@ -19,24 +20,26 @@ export const shazamCoreApi = createApi({
     getTopCharts: builder.query<IShazamCore[], void>({
       query: () => "v1/charts/world",
     }),
-    getSongsByGenre: builder.query({
+    getSongsByGenre: builder.query<IShazamCore[], string>({
       query: (genre) => `v1/charts/genre-world?genre_code=${genre}`,
     }),
     getSongsByCountry: builder.query<IShazamCore[], string>({
       query: (countryCode) => `v1/charts/country?country_code=${countryCode}`,
     }),
-    getSongsBySearch: builder.query({
+    getSongsBySearch: builder.query<ISearchTerm, string>({
       query: (searchTerm) =>
         `v1/search/multi?search_type=SONGS_ARTISTS&query=${searchTerm}`,
     }),
     getArtistDetails: builder.query<IDetailArtist, string | undefined>({
       query: (artistId) => `v2/artists/details?artist_id=${artistId}`,
     }),
-    getSongDetails: builder.query({
-      query: ({ songid }) => `v1/tracks/details?track_id=${songid}`,
+    getSongDetails: builder.query<IShazamCoreDetail, object>({
+      query: ({ songid }: { songid: string }) =>
+        `v1/tracks/details?track_id=${songid}`,
     }),
-    getSongRelated: builder.query({
-      query: ({ songid }) => `v1/tracks/related?track_id=${songid}`,
+    getSongRelated: builder.query<IShazamCore[], object>({
+      query: ({ songid }: { songid: string }) =>
+        `v1/tracks/related?track_id=${songid}`,
     }),
   }),
 });

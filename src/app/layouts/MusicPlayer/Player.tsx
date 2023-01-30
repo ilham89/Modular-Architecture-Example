@@ -1,6 +1,5 @@
-//@ts-nocheck
-
 import { useRef, useEffect } from "react";
+import { PlayerProps } from "./interfaces";
 
 const Player = ({
   activeSong,
@@ -11,7 +10,7 @@ const Player = ({
   onTimeUpdate,
   onLoadedData,
   repeat,
-}) => {
+}: PlayerProps) => {
   const ref = useRef<HTMLAudioElement>(null);
   if (ref.current) {
     if (isPlaying) {
@@ -35,7 +34,7 @@ const Player = ({
 
   return (
     <audio
-      src={activeSong?.hub?.actions[1]?.uri}
+      src={activeSong?.hub?.actions?.[1]?.uri}
       ref={ref}
       loop={repeat}
       onEnded={onEnded}

@@ -1,3 +1,5 @@
+import { TentacledAttributes } from "./detail-artist";
+
 export interface IShazamCore {
   layout: string;
   type: TopArtistType;
@@ -11,6 +13,7 @@ export interface IShazamCore {
   url: string;
   highlightsurls: Highlightsurls;
   properties: Highlightsurls;
+  attributes?: TentacledAttributes;
 }
 
 export interface IShazamCoreDetail {

@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,6 +14,8 @@ import PlayPause from "@shared/components/PlayPause";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { useAppSelector } from "@store/index";
+import { IShazamCore } from "@shared/interfaces/shazam-core";
+import { TopChartCardProps } from "./interface";
 
 const TopChartCard = ({
   song,
@@ -23,7 +24,7 @@ const TopChartCard = ({
   activeSong,
   handlePauseClick,
   handlePlayClick,
-}: any) => (
+}: TopChartCardProps) => (
   <div
     className={`w-full flex flex-row items-center hover:bg-[#4c426e] ${
       activeSong?.title === song?.title ? "bg-[#4c426e]" : "bg-transparent"
@@ -40,7 +41,7 @@ const TopChartCard = ({
         <Link to={`/songs/${song.key}`}>
           <p className="text-xl font-bold text-white">{song?.title}</p>
         </Link>
-        <Link to={`/artists/${song?.artists[0].adamid}`}>
+        <Link to={`/artists/${song?.artists?.[0].adamid}`}>
           <p className="text-base text-gray-300 mt-1">{song?.subtitle}</p>
         </Link>
       </div>
@@ -73,7 +74,7 @@ const TopPlay = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = (song, i) => {
+  const handlePlayClick = (song: IShazamCore, i: number) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
@@ -129,7 +130,7 @@ const TopPlay = () => {
               style={{ width: "25%", height: "auto" }}
               className="shadow-lg rounded-full animate-slideright"
             >
-              <Link to={`/artists/${artist?.artists[0].adamid}`}>
+              <Link to={`/artists/${artist?.artists?.[0].adamid}`}>
                 <img
                   src={artist?.images?.background}
                   alt="Name"
