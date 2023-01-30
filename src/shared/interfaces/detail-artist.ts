@@ -1,3 +1,5 @@
+import { IShazamCore } from "./shazam-core";
+
 export interface IDetailArtist {
   data: IDetailArtistDatum[];
 }
@@ -182,7 +184,7 @@ export interface DatumViews {
 export interface FeaturedAlbums {
   href: string;
   attributes: FeaturedAlbumsAttributes;
-  data: FeaturedAlbumsDatum[];
+  data: IShazamCore[];
   next?: string;
 }
 
@@ -201,6 +203,12 @@ export interface FeaturedAlbumsDatum {
   title?: string;
   subtitle?: string;
   images?: Images;
+  // layout: string;
+  // share: Share;
+  // hub: Hub;
+  // url: string;
+  // highlightsurls: Highlightsurls;
+  // properties: Highlightsurls;
 }
 
 export interface Images {
