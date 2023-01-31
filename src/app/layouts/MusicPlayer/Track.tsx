@@ -1,3 +1,4 @@
+import { FallbackCover } from "@assets/index";
 import { TrackProps } from "./interfaces";
 
 const Track = ({ isPlaying, isActive, activeSong }: TrackProps) => (
@@ -8,7 +9,7 @@ const Track = ({ isPlaying, isActive, activeSong }: TrackProps) => (
       } hidden sm:block h-16 w-16 mr-4`}
     >
       <img
-        src={activeSong?.images?.coverart}
+        src={activeSong?.images?.coverart || FallbackCover}
         alt="cover art"
         className="rounded-full"
       />
