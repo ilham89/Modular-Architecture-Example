@@ -1,3 +1,4 @@
+import { FallbackCover } from "@assets/index";
 import { Link } from "react-router-dom";
 import { DetailHeaderProps } from "./interface";
 
@@ -16,8 +17,8 @@ const DetailHeader = ({
           artistId
             ? artistData?.attributes?.artwork?.url
                 .replace("{w}", "500")
-                .replace("{h}", "500")
-            : songData?.images?.coverart
+                .replace("{h}", "500") || FallbackCover
+            : songData?.images?.coverart || FallbackCover
         }
         className="sm:w-48 w-28 sm:h-48 h-28 rounded-full object-cover border-2 shadow-xl shadow-black"
       />

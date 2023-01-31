@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import PlayPause from "@shared/components/PlayPause";
 import { SongBarProps } from "./interface";
+import { FallbackCover } from "@assets/index";
 
 const SongBar = ({
   song,
@@ -24,8 +25,8 @@ const SongBar = ({
           artistId
             ? song?.attributes?.artwork?.url
                 .replace("{w}", "125")
-                .replace("{h}", "125")
-            : song?.images?.coverart
+                .replace("{h}", "125") || FallbackCover
+            : song?.images?.coverart || FallbackCover
         }
         alt={song?.title}
       />

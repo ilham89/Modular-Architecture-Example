@@ -16,6 +16,7 @@ import "swiper/css/free-mode";
 import { useAppSelector } from "@store/index";
 import { IShazamCore } from "@shared/interfaces/shazam-core";
 import { TopChartCardProps } from "./interface";
+import { FallbackCover } from "@assets/index";
 
 const TopChartCard = ({
   song,
@@ -132,7 +133,7 @@ const TopPlay = () => {
             >
               <Link to={`/artists/${artist?.artists?.[0].adamid}`}>
                 <img
-                  src={artist?.images?.background}
+                  src={artist?.images?.background || FallbackCover}
                   alt="Name"
                   className="rounded-full w-full object-cover"
                 />
